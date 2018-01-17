@@ -8,6 +8,11 @@ class QuestionAnswer
 {
 public:
     QuestionAnswer();
+    QuestionAnswer(QString q, QString a);
+    QuestionAnswer(const QuestionAnswer &wzor);
+
+    QString getQuestion();
+
 private:
     QString question;
     QString answer;

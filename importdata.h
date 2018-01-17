@@ -2,14 +2,18 @@
 #define IMPORTDATA_H
 
 #include <questionanswer.h>
-#include <list>
+#include <vector>
+
+// to powinien byc singleton !!
 
 class ImportData
 {
 public:
     ImportData();
+public:
+    std::vector<QuestionAnswer> get_dataToLearn();
 private:
-    std::list<QuestionAnswer> dataToLearn;
+    std::vector<QuestionAnswer> dataToLearn;
     QString dataRead;
 };
 
