@@ -10,6 +10,7 @@ class Window : public QWidget
  Q_OBJECT
 public:
  explicit Window(QWidget *parent = 0);
+ void createGUI();
 private slots:
  void slotButtonClicked(bool checked);
 public slots:

@@ -12,12 +12,14 @@ public:
     QuestionAnswer(const QuestionAnswer &wzor);
 
     QString getQuestion();
+    QString getAnswer();
+    void setResponseOfUser(int resp);
 
 private:
     QString question;
     QString answer;
     int responseOfUser;         //feedback od użytkownika (skala 1-5)
-    int levelOfKnowledge;       //dla algorytmu do wybierania częstotliwości
+    int levelOfKnowledge;       //dla algorytmu do wybierania częstotliwości -> POCZĄTKOWO 0
 };
 
 #endif // QUESTIONANSWER_H

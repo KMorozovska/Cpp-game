@@ -24,3 +24,11 @@ QuestionAnswer::QuestionAnswer(const QuestionAnswer &wzor) {
 QString QuestionAnswer::getQuestion(){
     return question;
 }
+
+QString QuestionAnswer::getAnswer(){
+    return answer;
+}
+
+void QuestionAnswer::setResponseOfUser(int resp){
+    responseOfUser = resp;
+}

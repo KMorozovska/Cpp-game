@@ -6,7 +6,7 @@
 ImportData::ImportData()
 {
 
-        QFile file("dataToLearn.txt");
+        QFile file(":/new/prefix1/dataToLearn.txt");
         if(!file.open(QIODevice::ReadOnly)) {
             QMessageBox::information(0, "error", file.errorString());
         }

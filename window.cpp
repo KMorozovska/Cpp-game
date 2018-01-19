@@ -12,18 +12,7 @@ Window::Window(QWidget *parent) :
  // Set size of the window
  setFixedSize(100, 50);
 
-
- newGameButton = new QPushButton("Graj od początku", this);
- newGameButton->setGeometry(100, 100, 150, 30);
- newGameButton->setCheckable(true);
-
- loadGameButton = new QPushButton("Graj dalej", this);
- loadGameButton->setGeometry(100, 200, 150, 30);
- loadGameButton->setCheckable(true);
-
- rulesButton = new QPushButton("Zasady gry", this);
- rulesButton->setGeometry(100, 300, 150, 30);
- rulesButton->setCheckable(true);
+ createGUI();
 
  connect(newGameButton, SIGNAL(clicked(bool)), this, SLOT(openNewGameWindow()));
  connect(newGameButton, SIGNAL (clicked(bool)), this, SLOT (slotButtonClicked(bool)));
@@ -54,4 +43,18 @@ void Window::openRulesDialogue()
     msgBox.exec();
 }
 
+void Window::createGUI() {
+
+    newGameButton = new QPushButton("Graj od początku", this);
+    newGameButton->setGeometry(100, 100, 150, 30);
+    newGameButton->setCheckable(true);
+
+    loadGameButton = new QPushButton("Graj dalej", this);
+    loadGameButton->setGeometry(100, 200, 150, 30);
+    loadGameButton->setCheckable(true);
+
+    rulesButton = new QPushButton("Zasady gry", this);
+    rulesButton->setGeometry(100, 300, 150, 30);
+    rulesButton->setCheckable(true);
+}
 
