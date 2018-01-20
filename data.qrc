@@ -2,4 +2,7 @@
     <qresource prefix="/new/prefix1">
         <file alias="dataToLearn.txt">dataToLearn.txt</file>
     </qresource>
+    <qresource prefix="/new/prefix1">
+        <file alias="dataProgress.txt">dataProgress.txt</file>
+    </qresource>
 </RCC>

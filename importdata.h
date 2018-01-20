@@ -4,16 +4,18 @@
 #include <questionanswer.h>
 #include <vector>
 
-// to powinien byc singleton !!
-
 class ImportData
 {
-public:
-    ImportData();
-public:
-    std::vector<QuestionAnswer> get_dataToLearn();
 private:
+    ImportData();
+    ImportData( const ImportData & );
+    static ImportData* instance;
+public:
+    static ImportData* getInstance();
+
+public:
     std::vector<QuestionAnswer> dataToLearn;
+private:
     QString dataRead;
 };
 

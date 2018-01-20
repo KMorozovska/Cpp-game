@@ -6,3 +6,5 @@ Nice, Miło
 Weather, Pogoda
 Morning, Poranek
 Breakfest, Śniadanie
+Day, Dzień
+School, Szkoła

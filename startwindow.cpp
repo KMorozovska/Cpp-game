@@ -1,4 +1,4 @@
-#include "window.h"
+#include "startwindow.h"
 #include "gamewindow.h"
 
 #include <QPushButton>
@@ -6,7 +6,7 @@
 #include <QMessageBox>
 
 
-Window::Window(QWidget *parent) :
+StartWindow::StartWindow(QWidget *parent) :
  QWidget(parent)
 {
  // Set size of the window
@@ -15,26 +15,45 @@ Window::Window(QWidget *parent) :
  createGUI();
 
  connect(newGameButton, SIGNAL(clicked(bool)), this, SLOT(openNewGameWindow()));
- connect(newGameButton, SIGNAL (clicked(bool)), this, SLOT (slotButtonClicked(bool)));
+ connect(newGameButton, SIGNAL (clicked(bool)), this, SLOT (slotButtonNewClicked(bool)));
+ connect(loadGameButton, SIGNAL(clicked(bool)), this, SLOT(openExistingGameWindow()));
+ connect(loadGameButton, SIGNAL (clicked(bool)), this, SLOT (slotButtonLoadClicked(bool)));
 
  connect(rulesButton, SIGNAL(clicked(bool)), this, SLOT(openRulesDialogue()));
 
 }
 
-void Window::slotButtonClicked(bool checked)
+void StartWindow::slotButtonNewClicked(bool checked)
 {
  if (checked) {
  newGameButton->setText("Otwarto gre");
+ newGameButton->setEnabled(false);
+ loadGameButton->setEnabled(false);
  }
 }
 
-void Window::openNewGameWindow()
+void StartWindow::slotButtonLoadClicked(bool checked)
 {
-    newGameWindow = new GameWindow(); // Be sure to destroy your window somewhere
+ if (checked) {
+ loadGameButton->setText("Otwarto gre");
+ loadGameButton->setEnabled(false);
+ newGameButton->setEnabled(false);
+ }
+}
+
+void StartWindow::openNewGameWindow()
+{
+    newGameWindow = new GameWindow(true); // Be sure to destroy your window somewhere
     newGameWindow->show();
 }
 
-void Window::openRulesDialogue()
+void StartWindow::openExistingGameWindow()
+{
+    newGameWindow = new GameWindow(false); // Be sure to destroy your window somewhere
+    newGameWindow->show();
+}
+
+void StartWindow::openRulesDialogue()
 {
     QMessageBox msgBox;
     msgBox.setWindowTitle("Zasady gry Supermemo");
@@ -43,7 +62,7 @@ void Window::openRulesDialogue()
     msgBox.exec();
 }
 
-void Window::createGUI() {
+void StartWindow::createGUI() {
 
     newGameButton = new QPushButton("Graj od początku", this);
     newGameButton->setGeometry(100, 100, 150, 30);

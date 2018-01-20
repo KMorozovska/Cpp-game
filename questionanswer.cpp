@@ -1,34 +1,33 @@
 #include "questionanswer.h"
 
-QuestionAnswer::QuestionAnswer()
-{
+QuestionAnswer::QuestionAnswer() { }
 
-
-
-
-}
-
-QuestionAnswer::QuestionAnswer(QString q, QString a)
+QuestionAnswer::QuestionAnswer(std::string q, std::string a)
 {
     question = q;
     answer = a;
+    qualityOfResponse = 0;
+    eFactor = 1.3;
+    eFactorString = " ";
 }
 
 QuestionAnswer::QuestionAnswer(const QuestionAnswer &wzor) {
     question = wzor.question;
     answer = wzor.answer;
-    responseOfUser = wzor.responseOfUser;
-    levelOfKnowledge = wzor.levelOfKnowledge;
+    qualityOfResponse = wzor.qualityOfResponse;
+    eFactor = wzor.eFactor;
+    eFactorString = wzor.eFactorString;
 }
 
-QString QuestionAnswer::getQuestion(){
+std::string QuestionAnswer::getQuestion(){
     return question;
 }
 
-QString QuestionAnswer::getAnswer(){
+std::string QuestionAnswer::getAnswer(){
     return answer;
 }
 
-void QuestionAnswer::setResponseOfUser(int resp){
-    responseOfUser = resp;
+void QuestionAnswer::setQualityOfResponse(int resp){
+    qualityOfResponse = resp;
 }
+

@@ -5,16 +5,18 @@
 #include "gamewindow.h"
 
 class QPushButton;
-class Window : public QWidget
+class StartWindow : public QWidget
 {
  Q_OBJECT
 public:
- explicit Window(QWidget *parent = 0);
+ explicit StartWindow(QWidget *parent = 0);
  void createGUI();
 private slots:
- void slotButtonClicked(bool checked);
+ void slotButtonNewClicked(bool checked);
+ void slotButtonLoadClicked(bool checked);
 public slots:
    void openNewGameWindow();
+   void openExistingGameWindow();
    void openRulesDialogue();
 private:
  GameWindow *newGameWindow;

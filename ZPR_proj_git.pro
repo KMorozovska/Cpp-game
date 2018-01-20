@@ -14,16 +14,23 @@ QT = core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 SOURCES += main.cpp \
-    window.cpp \
     gamewindow.cpp \
     questionanswer.cpp \
-    importdata.cpp
+    importdata.cpp \
+    importprogess.cpp \
+    startwindow.cpp
 
 HEADERS += \
-    window.h \
     gamewindow.h \
     questionanswer.h \
-    importdata.h
+    importdata.h \
+    importprogess.h \
+    startwindow.h \
+    qstringserializer.h
 
 RESOURCES += \
     data.qrc
+
+INCLUDEPATH += /usr/include/boost
+
+LIBS += -L/usr/include/boost -lboost_serialization

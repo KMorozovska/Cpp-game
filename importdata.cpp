@@ -3,6 +3,16 @@
 #include <QTextStream>
 #include <QMessageBox>
 
+#include <fstream>
+#include <sstream>
+#include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/serialization/string.hpp>
+#include <boost/serialization/export.hpp>
+#include <boost/serialization/vector.hpp>
+#include <boost/serialization/list.hpp>
+#include "qstringserializer.h"
+
 ImportData::ImportData()
 {
 
@@ -16,7 +26,9 @@ ImportData::ImportData()
         while(!in.atEnd()) {
             QString line = in.readLine();
             QStringList fields = line.split(",");
-            QuestionAnswer *newElement = new QuestionAnswer(fields[0], fields[1]);
+            std::string question = fields[0].toUtf8().constData();
+            std::string answer = fields[1].toUtf8().constData();
+            QuestionAnswer *newElement = new QuestionAnswer(question, answer);
 
             //newElement.question = fields[0];
             dataToLearn.push_back(*newElement);
@@ -27,6 +39,14 @@ ImportData::ImportData()
         file.close();
 }
 
-std::vector<QuestionAnswer> ImportData::get_dataToLearn() {
-    return dataToLearn;
+ImportData* ImportData::instance = 0;
+
+ImportData* ImportData::getInstance()
+{
+    if (instance == 0)
+    {
+        instance = new ImportData();
+    }
+
+    return instance;
 }
