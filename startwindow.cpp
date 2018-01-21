@@ -5,6 +5,9 @@
 #include <QApplication>
 #include <QMessageBox>
 
+/**
+ * Klasa tworząca początkowe okno aplikacji.
+ */
 
 StartWindow::StartWindow(QWidget *parent) :
  QWidget(parent)

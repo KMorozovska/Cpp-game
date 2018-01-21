@@ -2,6 +2,10 @@
 #include <QPushButton>
 #include "startwindow.h"
 
+/**
+ * Wywołanie okna początkowego.
+ */
+
 int main(int argc, char **argv)
 {
  QApplication app (argc, argv);

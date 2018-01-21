@@ -19,7 +19,7 @@ class GameWindow : public QWidget
  Q_OBJECT
 public:
  explicit GameWindow(bool isNewGame = true, QWidget *parent = 0);
- int generateNextWord();
+ QuestionAnswer* generateNextWord();
  void createGUI();
  void setSignals();
  void refreshWindow(int chosenValue);
@@ -39,7 +39,7 @@ private slots:
  void slotNumberChosen3(bool checked);
  void slotNumberChosen4(bool checked);
  void slotNumberChosen5(bool checked);
- void refreshProgress();
+ void exportProgress();
 
 public slots:
 
@@ -56,7 +56,7 @@ private:
  QRadioButton *radio5;
  QVBoxLayout *windowLayout;
  std::vector<QuestionAnswer> myData;
- int chosenWord;
+ QuestionAnswer* chosenWord;
  ImportData *importDataObject;
  ImportProgress *importProgressObject;
 };

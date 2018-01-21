@@ -25,7 +25,6 @@ HEADERS += \
     questionanswer.h \
     importdata.h \
     startwindow.h \
-    qstringserializer.h \
     importprogress.h
 
 RESOURCES += \

@@ -1,10 +1,42 @@
-Hello,  Cześć,  , 
-Good Morning,  Dzień dobry,  , 
-How are you?,  Jak się masz?,  , 
-Thank you,  Dziękuję,  , 
-Nice,  Miło,  , 
-Weather,  Pogoda,  , 
-Morning,  Poranek,  , 
-Breakfest,  Śniadanie,  , 
-Day,  Dzień,  , 
-School,  Szkoła,  , 
+Hello,  Cześć, 2600000,000000
+Eat,  Jeść, 2500000,000000
+My name is,  Nazywam się, 2500000,000000
+School,  Szkoła, 2500000,000000
+Where,  Gdzie, 2500000,000000
+When,  Kiedy, 2500000,000000
+Which,  Który, 2500000,000000
+Can you help me?,  Czy możesz mi pomóc?, 2500000,000000
+Have fun,  Baw się dobrze, 2500000,000000
+Question,  Pytanie, 2500000,000000
+Answer,  Odpowiedź, 2500000,000000
+Girl,  Dziewczyna, 2500000,000000
+Boy,  Chłopak, 2500000,000000
+Of course,  Oczywiście, 2500000,000000
+Father,  Ojciec, 2500000,000000
+Friend,  Przyjaciel, 2500000,000000
+Brother,  Brat, 2500000,000000
+Sister,  Siostra, 2500000,000000
+Family,  Rodzina, 2500000,000000
+Walk,  Iść, 2500000,000000
+Name,  Imię, 2500000,000000
+See,  Widzieć, 2500000,000000
+Mother,  Matka, 2500000,000000
+Good Morning,  Dzień dobry, 2500000,000000
+How are you?,  Jak się masz?, 2500000,000000
+Thank you,  Dziękuję, 2500000,000000
+Nice,  Miło, 2500000,000000
+Weather,  Pogoda, 2500000,000000
+Morning,  Poranek, 2500000,000000
+Window,  Okno, 2500000,000000
+Breakfest,  Śniadanie, 2500000,000000
+Day,  Dzień, 2500000,000000
+This is,  To jest, 2500000,000000
+Home,  Dom, 2500000,000000
+Kitchen,  Kuchnia, 2500000,000000
+Bedroom,  Sypialnia, 2500000,000000
+Wardrobe,  Szafa, 2500000,000000
+Surname,  Nazwisko, 2500000,000000
+Be,  Być, 2180000,000000
+You are,  Ty jesteś, 2180000,000000
+I am,  Jestem, 1700000,000000
+Sleep,  Spać, 1700000,000000

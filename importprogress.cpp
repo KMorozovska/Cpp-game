@@ -3,6 +3,11 @@
 #include <QTextStream>
 #include <QMessageBox>
 
+/**
+ * Klasa typu Singleton służąca do zaimportowania danych z pliku postępów
+ * i wpisania ich do wektora dataToLearn, wykorzystywanego w klasie GameWindow.
+ */
+
 ImportProgress::ImportProgress()
 {
     QFile file(":/new/prefix1/dataProgress.txt");

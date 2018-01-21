@@ -2,18 +2,13 @@
 #define QUESTIONANSWER_H
 
 #include <iostream>
-//#include <ostream>
 #include <QString>
 
 #include <iostream>
 #include <string>
 #include <vector>
 #include <fstream>
-#include <boost/archive/binary_oarchive.hpp>
-#include <boost/archive/binary_iarchive.hpp>
 
-#include <boost/serialization/vector.hpp>
-#include "qstringserializer.h"
 
 class QuestionAnswer
 {
@@ -25,29 +20,23 @@ public:
 
     std::string getQuestion();
     std::string getAnswer();
-    //int getEFactor();
-    std::string getEFactorString();
-    void setQualityOfResponse(int resp);
-
-    friend class boost::serialization::access;
-    template<class Archieve>
-    void serialize(Archieve& ar, const unsigned int version)
-    {
-            ar& question;
-            ar& answer;
-            ar& qualityOfResponse;
-            ar& eFactor;
-            ar& eFactorString;
-    }
-
+    float getEFactor();
+    bool getAlreadyChosen();
+    void setEFactor(int resp);
+    void setAlreadyChosen(bool b);
 
 private:
+    /** słowo po angielsku **/
     std::string question;
+
+    /** odpowiedź - słowo po polsku **/
     std::string answer;
-    int qualityOfResponse;         //feedback od użytkownika (skala 1-5)
-    int eFactor;                   //dla algorytmu do wybierania częstotliwości
-    std::string eFactorString;
-    //int eFactorPrim;
+
+    /** współczynnik nauczenia, potrzebny do algorytmu wybierania częstotliwości **/
+    float eFactor;
+
+    /** flaga służąca do sprawdzenia, czy w danym uruchomieniu gry wystąpiło już dane słowo **/
+    bool alreadyChosen;
 };
 
 #endif // QUESTIONANSWER_H

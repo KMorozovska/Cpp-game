@@ -3,15 +3,10 @@
 #include <QTextStream>
 #include <QMessageBox>
 
-#include <fstream>
-#include <sstream>
-#include <boost/archive/binary_iarchive.hpp>
-#include <boost/archive/binary_oarchive.hpp>
-#include <boost/serialization/string.hpp>
-#include <boost/serialization/export.hpp>
-#include <boost/serialization/vector.hpp>
-#include <boost/serialization/list.hpp>
-#include "qstringserializer.h"
+/**
+ * Klasa typu Singleton służąca do zaimportowania danych z pliku początkowego
+ * i wpisania ich do wektora dataToLearn, wykorzystywanego w klasie GameWindow.
+ */
 
 ImportData::ImportData()
 {
@@ -30,12 +25,10 @@ ImportData::ImportData()
             std::string answer = fields[1].toUtf8().constData();
             QuestionAnswer *newElement = new QuestionAnswer(question, answer);
 
-            //newElement.question = fields[0];
             dataToLearn.push_back(*newElement);
 
             delete newElement;
         }
-
         file.close();
 }
 

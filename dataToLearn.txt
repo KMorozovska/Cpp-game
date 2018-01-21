@@ -5,6 +5,38 @@ Thank you, Dziękuję
 Nice, Miło
 Weather, Pogoda
 Morning, Poranek
+Window, Okno
 Breakfest, Śniadanie
 Day, Dzień
 School, Szkoła
+Home, Dom
+Kitchen, Kuchnia
+Bedroom, Sypialnia
+Wardrobe, Szafa
+Name, Imię
+Surname, Nazwisko
+My name is, Nazywam się
+I am, Jestem
+You are, Ty jesteś
+This is, To jest
+Of course, Oczywiście
+Where, Gdzie
+When, Kiedy
+Which, Który
+Can you help me?, Czy możesz mi pomóc?
+Have fun, Baw się dobrze
+Question, Pytanie
+Answer, Odpowiedź
+Girl, Dziewczyna
+Boy, Chłopak
+Mother, Matka
+Father, Ojciec
+Friend, Przyjaciel
+Brother, Brat
+Sister, Siostra
+Family, Rodzina
+Walk, Iść
+Eat, Jeść
+Be, Być
+See, Widzieć
+Sleep, Spać
