@@ -1,6 +1,7 @@
 #include "gamewindow.h"
 #include "startwindow.h"
 #include "importdata.h"
+#include "importprogress.h"
 #include "questionanswer.h"
 
 #include <QPushButton>
@@ -31,23 +32,28 @@ GameWindow::GameWindow(bool isNewGame, QWidget *parent) :
 {
 
  if(isNewGame==true) {
+
     importDataObject = ImportData::getInstance();
-    //myData = importDataObject->get_dataToLearn();
-    chosenWord = generateNextWord();
 
     if(importDataObject->dataToLearn.empty()) {
-        QMessageBox msgBox;
-        msgBox.setWindowTitle("cos poszlo nie tak");
-        msgBox.setInformativeText("z importem");
-        msgBox.setDefaultButton(QMessageBox::Ok);
-        msgBox.exec();
+
+        showInfoWindow("Błąd", "Niepoprawny import danych");
     }
+    myData = importDataObject->dataToLearn;
  }
 
  if(isNewGame==false) {
 
-     //import wektora myData z pliku
+     importProgressObject = ImportProgress::getInstance();
+
+     if(importProgressObject->dataToLearn.empty()) {
+
+         showInfoWindow("Błąd", "Niepoprawny import danych");
+     }
+     myData = importProgressObject->dataToLearn;
  }
+
+ chosenWord = generateNextWord();
 
  createGUI();
  setLayout(windowLayout);
@@ -63,7 +69,6 @@ void GameWindow::setSignals() {
     connect(radio3, SIGNAL (clicked(bool)), this, SLOT (slotNumberChosen3(bool)));
     connect(radio4, SIGNAL (clicked(bool)), this, SLOT (slotNumberChosen4(bool)));
     connect(radio5, SIGNAL (clicked(bool)), this, SLOT (slotNumberChosen5(bool)));
-    connect(this, &GameWindow::destroyed, this, &GameWindow::refreshProgress);
 }
 
 int GameWindow::generateNextWord(){
@@ -73,7 +78,7 @@ int GameWindow::generateNextWord(){
 
 void GameWindow::refreshWindow(int chosenValue) {
 
-    importDataObject->dataToLearn[chosenWord].setQualityOfResponse(chosenValue);
+    myData[chosenWord].setQualityOfResponse(chosenValue);
     chosenWord = generateNextWord();
 
     delete label;
@@ -86,28 +91,35 @@ void GameWindow::refreshWindow(int chosenValue) {
     setSignals();
 }
 
+void GameWindow::closeEvent(QCloseEvent *event)
+{
+    refreshProgress();
+}
+
 void GameWindow::refreshProgress() {
 
-    //std::cout << "Hello world";
+    std::ofstream ofs;
+    ofs.open("dataProgress.txt", std::ofstream::out | std::ofstream::trunc);
+    ofs.close();
 
-    //std::ofstream ofs;
-    //ofs.open("/new/prefix1/dataProgress.txt", std::ofstream::out | std::ofstream::trunc);
-    //ofs.close();
-
-    std::string filename = "/new/prefix1/dataProgress.txt";
+    std::string filename = "dataProgress.txt";
     std::ofstream out(filename.c_str());
-    std::stringstream ss;
-    boost::archive::binary_oarchive oa(ss);
-    oa << myData;
-    out << ss.str();
+
+    for (int i=0; i<myData.size();i++) {
+        out << myData[i].getQuestion() << ", ";
+        out << myData[i].getAnswer() << ", ";
+        out << myData[i].getEFactorString() << ", " << "\n";
+    }
     out.close();
+
+    showInfoWindow("Wyjście", "Twoje postępy zostały zapisane");
 
 }
 
 void GameWindow::slotMainButtonClicked(bool checked)
 {
  if (checked) {
-    mainButton->setText(QString::fromStdString(importDataObject->dataToLearn[chosenWord].getAnswer()));
+    mainButton->setText(QString::fromStdString(myData[chosenWord].getAnswer()));
     windowLayout->addWidget(groupBox);
  }
 }
@@ -158,7 +170,7 @@ void GameWindow::slotNumberChosen0(bool checked)
      label->setGeometry(30,30,300,50);
 
 
-     mainButton = new QPushButton(QString::fromStdString(importDataObject->dataToLearn[chosenWord].getQuestion()), this);
+     mainButton = new QPushButton(QString::fromStdString(myData[chosenWord].getQuestion()), this);
 
      mainButton->setGeometry(0, 100, 200, 200);
      mainButton->setCheckable(true);
@@ -186,5 +198,15 @@ void GameWindow::slotNumberChosen0(bool checked)
 
      setFixedSize(500, 500);
      setWindowTitle("Graj - supermemo");
+
+ }
+
+ void GameWindow::showInfoWindow(QString title, QString message) {
+
+     QMessageBox msgBox;
+     msgBox.setWindowTitle(title);
+     msgBox.setInformativeText(message);
+     msgBox.setDefaultButton(QMessageBox::Ok);
+     msgBox.exec();
 
  }

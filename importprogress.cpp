@@ -1,9 +1,9 @@
-#include "importprogess.h"
+#include "importprogress.h"
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
 
-ImportProgess::ImportProgess()
+ImportProgress::ImportProgress()
 {
     QFile file(":/new/prefix1/dataProgress.txt");
     if(!file.open(QIODevice::ReadOnly)) {
@@ -14,7 +14,7 @@ ImportProgess::ImportProgess()
     while(!in.atEnd()) {
         QString line = in.readLine();
         QStringList fields = line.split(",");
-        QuestionAnswer *newElement = new QuestionAnswer(fields[0].toUtf8().constData(), fields[1].toUtf8().constData());
+        QuestionAnswer *newElement = new QuestionAnswer(fields[0].toUtf8().constData(), fields[1].toUtf8().constData(), fields[2].toUtf8().constData());
 
         dataToLearn.push_back(*newElement);
         delete newElement;
@@ -22,16 +22,14 @@ ImportProgess::ImportProgess()
     file.close();
 }
 
-ImportProgess* ImportProgess::instance = 0;
+ImportProgress* ImportProgress::instance = 0;
 
-ImportProgess* ImportProgess::getInstance()
+ImportProgress* ImportProgress::getInstance()
 {
 if (instance == 0) {
-    instance = new ImportProgess();
+    instance = new ImportProgress();
 }
   return instance;
 }
 
-std::vector<QuestionAnswer> ImportProgess::get_dataToLearn() {
-return dataToLearn;
-}
+

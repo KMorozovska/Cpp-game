@@ -20,10 +20,13 @@ class QuestionAnswer
 public:
     QuestionAnswer();
     QuestionAnswer(std::string q, std::string a);
+    QuestionAnswer(std::string q, std::string a, std::string e);
     QuestionAnswer(const QuestionAnswer &wzor);
 
     std::string getQuestion();
     std::string getAnswer();
+    //int getEFactor();
+    std::string getEFactorString();
     void setQualityOfResponse(int resp);
 
     friend class boost::serialization::access;

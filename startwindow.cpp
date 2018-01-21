@@ -9,18 +9,20 @@
 StartWindow::StartWindow(QWidget *parent) :
  QWidget(parent)
 {
- // Set size of the window
+
  setFixedSize(100, 50);
 
  createGUI();
+ refreshButtons();
 
- connect(newGameButton, SIGNAL(clicked(bool)), this, SLOT(openNewGameWindow()));
- connect(newGameButton, SIGNAL (clicked(bool)), this, SLOT (slotButtonNewClicked(bool)));
- connect(loadGameButton, SIGNAL(clicked(bool)), this, SLOT(openExistingGameWindow()));
- connect(loadGameButton, SIGNAL (clicked(bool)), this, SLOT (slotButtonLoadClicked(bool)));
+}
 
- connect(rulesButton, SIGNAL(clicked(bool)), this, SLOT(openRulesDialogue()));
-
+void StartWindow::refreshButtons() {
+    connect(newGameButton, SIGNAL(clicked(bool)), this, SLOT(openNewGameWindow()));
+    connect(newGameButton, SIGNAL (clicked(bool)), this, SLOT (slotButtonNewClicked(bool)));
+    connect(loadGameButton, SIGNAL(clicked(bool)), this, SLOT(openExistingGameWindow()));
+    connect(loadGameButton, SIGNAL (clicked(bool)), this, SLOT (slotButtonLoadClicked(bool)));
+    connect(rulesButton, SIGNAL(clicked(bool)), this, SLOT(openRulesDialogue()));
 }
 
 void StartWindow::slotButtonNewClicked(bool checked)

@@ -3,6 +3,7 @@
 
 #include "questionanswer.h"
 #include "importdata.h"
+#include "importprogress.h"
 #include <QWidget>
 #include <QLabel>
 #include <QGroupBox>
@@ -22,7 +23,10 @@ public:
  void createGUI();
  void setSignals();
  void refreshWindow(int chosenValue);
- void setIsNewGame(bool is);
+ void showInfoWindow(QString t, QString m);
+
+protected:
+ void closeEvent(QCloseEvent *event) override;
 
 signals:
  void finished(int exitCode, QProcess::ExitStatus exitStatus);
@@ -40,7 +44,6 @@ private slots:
 public slots:
 
 private:
-
  QPushButton *mainButton;
  QLabel *label;
  QLabel *label2;
@@ -54,9 +57,8 @@ private:
  QVBoxLayout *windowLayout;
  std::vector<QuestionAnswer> myData;
  int chosenWord;
- //bool isNewGame;
  ImportData *importDataObject;
-
+ ImportProgress *importProgressObject;
 };
 
 

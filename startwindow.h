@@ -1,5 +1,5 @@
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef STARTWINDOW_H
+#define STARTWINDOW_H
 
 #include <QWidget>
 #include "gamewindow.h"
@@ -18,6 +18,8 @@ public slots:
    void openNewGameWindow();
    void openExistingGameWindow();
    void openRulesDialogue();
+public:
+   void refreshButtons();
 private:
  GameWindow *newGameWindow;
  QPushButton *newGameButton;
@@ -25,4 +27,4 @@ private:
  QPushButton *rulesButton;
 };
 
-#endif // WINDOW_H
+#endif // STARTWINDOW_H

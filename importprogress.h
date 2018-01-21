@@ -5,19 +5,19 @@
 #include <questionanswer.h>
 #include <vector>
 
-class ImportProgess
+class ImportProgress
 {
 private:
-    ImportProgess();
-    ImportProgess( const ImportProgess & );
-    static ImportProgess* instance;
+    ImportProgress();
+    ImportProgress( const ImportProgress & );
+    static ImportProgress* instance;
 public:
-    static ImportProgess* getInstance();
+    static ImportProgress* getInstance();
 
 public:
-    std::vector<QuestionAnswer> get_dataToLearn();
-private:
     std::vector<QuestionAnswer> dataToLearn;
+private:
+
     QString dataRead;
 };
 

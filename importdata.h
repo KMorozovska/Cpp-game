@@ -12,7 +12,6 @@ private:
     static ImportData* instance;
 public:
     static ImportData* getInstance();
-
 public:
     std::vector<QuestionAnswer> dataToLearn;
 private:

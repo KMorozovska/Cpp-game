@@ -17,16 +17,16 @@ SOURCES += main.cpp \
     gamewindow.cpp \
     questionanswer.cpp \
     importdata.cpp \
-    importprogess.cpp \
-    startwindow.cpp
+    startwindow.cpp \
+    importprogress.cpp
 
 HEADERS += \
     gamewindow.h \
     questionanswer.h \
     importdata.h \
-    importprogess.h \
     startwindow.h \
-    qstringserializer.h
+    qstringserializer.h \
+    importprogress.h
 
 RESOURCES += \
     data.qrc

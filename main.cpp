@@ -12,8 +12,5 @@ int main(int argc, char **argv)
 
  window.show();
 
-//QPushButton button ("Hello world !");
-//button.show();
-
  return app.exec();
 }

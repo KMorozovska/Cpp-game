@@ -11,6 +11,15 @@ QuestionAnswer::QuestionAnswer(std::string q, std::string a)
     eFactorString = " ";
 }
 
+QuestionAnswer::QuestionAnswer(std::string q, std::string a, std::string e)
+{
+    question = q;
+    answer = a;
+    qualityOfResponse = 0;
+    eFactorString = e;
+    eFactor = atoi(e.c_str());
+}
+
 QuestionAnswer::QuestionAnswer(const QuestionAnswer &wzor) {
     question = wzor.question;
     answer = wzor.answer;
@@ -25,6 +34,10 @@ std::string QuestionAnswer::getQuestion(){
 
 std::string QuestionAnswer::getAnswer(){
     return answer;
+}
+
+std::string QuestionAnswer::getEFactorString(){
+    return eFactorString;
 }
 
 void QuestionAnswer::setQualityOfResponse(int resp){
